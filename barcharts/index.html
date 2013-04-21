@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <title>Assignment 2</title>
+        <script src="http://d3js.org/d3.v3.min.js" type="text/javascript"></script>
+        <script src="chart.js" type="text/javascript"></script>
+    </head>
+    <body>
+        <div id="example1"></div>
+        <div id="example2"></div>
+        <script type="text/javascript">
+            var data = [15, 24, 78, 99, 21, 35, 3, 6, 130, 155, 66, 12, 44, 51];
+            var default_chart = BarChart();
+            var custom_chart = BarChart()
+                .settings("x_label", "Time")
+                .settings("y_label", "Money")
+                .settings("width", 350)
+                .settings("height", 400)
+                .settings("opacity", ".75")
+                .settings("bar_color", "red")
+                .settings("mouseover", function(d, i) {
+                    this.setAttribute("fill", "blue");
+                })
+                .settings("mouseout", function(d, i) {
+                    this.setAttribute("fill", "red");
+                });
+
+            var example1 = d3.select("#example1")
+                            .datum(data)
+                            .call(default_chart);
+
+            var example2 = d3.select("#example2")
+                            .datum(data)
+                            .call(custom_chart);
+
+        </script>
+    </body>
+</html>
