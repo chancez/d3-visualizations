@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <title>Assignment 2</title>
+        <script src="http://d3js.org/d3.v3.min.js" type="text/javascript"></script>
+        <script src="linechart.js" type="text/javascript"></script>
+        <style>
+
+        body {
+          font: 10px sans-serif;
+        }
+
+        .axis path,
+        .axis line {
+          fill: none;
+          stroke: #000;
+          shape-rendering: crispEdges;
+        }
+
+        .x.axis path {
+          display: none;
+        }
+
+        .line {
+          fill: none;
+          stroke: steelblue;
+          stroke-width: 1.5px;
+        }
+
+        </style>
+    </head>
+    <body>
+        <div id="example1"></div>
+        <div id="example2"></div>
+        <script type="text/javascript">
+            var data = [
+                [0, 12],
+                [1, 33],
+                [2, -10],
+                [3, 22],
+                [4, 25],
+                [5, 49],
+                [6, 53],
+                [7, 60],
+                [8, 71],
+                [9, 62],
+                [10, 66],
+            ];
+
+            var example_linechart = LineChart()
+                .settings("x_label", "Time")
+                .settings("y_label", "Money!")
+                .settings("margin_left", 35)
+                .settings("dots", true)
+
+            // var example_scatterchart = ScatterChart()
+            //     .settings("x_label", "Time")
+            //     .settings("y_label", "Money!")
+
+            example_linechart("#example1", data);
+            //example_scatterchart("#example2", data);
+
+        </script>
+    </body>
+</html>
