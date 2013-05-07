@@ -92,6 +92,7 @@ function BaseChart(new_settings) {
     .attr("transform", "translate(0," + avail_height + ")")
     .call(xAxis)
     .append("text")
+    .attr("class", "x label")
     .attr("x", avail_width/2)
     .attr("y", 30)
     .text(settings.x_label);
@@ -101,6 +102,7 @@ function BaseChart(new_settings) {
     .attr("class", "y axis")
     .call(yAxis)
     .append("text")
+    .attr("class", "y label")
     .attr("transform", "rotate(-90)")
     .attr("y", 6)
     .attr("dy", ".71em")
