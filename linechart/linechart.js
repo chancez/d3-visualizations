@@ -1,3 +1,11 @@
+function ScatterChart() {
+  // var chart = LineChart();
+  // this.settings = chart.call()
+  var chart = new LineChart().settings("dots", true).settings("lines", false);
+  this.settings = chart.settings;
+  return chart;
+}
+
 function LineChart() {
   // defaults
   var settings = {
@@ -104,4 +112,3 @@ function LineChart() {
 
   return chart;
 }
-
