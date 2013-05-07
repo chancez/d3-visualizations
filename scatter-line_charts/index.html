@@ -4,7 +4,7 @@
         <meta charset="utf-8">
         <title>Assignment 2</title>
         <script src="http://d3js.org/d3.v3.min.js" type="text/javascript"></script>
-        <script src="linechart.js" type="text/javascript"></script>
+        <script src="chart.js" type="text/javascript"></script>
         <style>
 
         body {
@@ -22,17 +22,25 @@
           display: none;
         }
 
-        .line {
+        #line .line {
           fill: none;
-          stroke: steelblue;
-          stroke-width: 1.5px;
+          stroke: cyan;
+          stroke-width: 5px;
+        }
+
+        #line .dot {
+            fill: green;
+        }
+
+        #scatter .dot {
+            fill: red;
         }
 
         </style>
     </head>
     <body>
-        <div id="example1"></div>
-        <div id="example2"></div>
+        <div id="line"></div>
+        <div id="scatter"></div>
         <script type="text/javascript">
             var data = [
                 [0, 12],
@@ -54,12 +62,15 @@
                 .settings("margin_left", 35)
                 .settings("dots", true)
 
-            // var example_scatterchart = ScatterChart()
-            //     .settings("x_label", "Time")
-            //     .settings("y_label", "Money!")
+            var example_scatterchart = ScatterChart()
+                .settings("x_label", "Time")
+                .settings("y_label", "Money!")
+                .settings("height", 580)
+                .settings("margin_top", 100)
+                .settings("dot_radius", 6.5)
 
-            example_linechart("#example1", data);
-            // example_scatterchart("#example2", data);
+            example_linechart("#line", data);
+            example_scatterchart("#scatter", data);
 
         </script>
     </body>

@@ -1,12 +1,20 @@
-function ScatterChart() {
-  // var chart = LineChart();
-  // this.settings = chart.call()
-  var chart = new LineChart().settings("dots", true).settings("lines", false);
-  this.settings = chart.settings;
-  return chart;
+function LineChart() {
+    var settings = {
+        dots: false,
+        lines: true
+    };
+    return BaseChart(settings);
 }
 
-function LineChart() {
+function ScatterChart() {
+    var settings = {
+        dots: true,
+        lines: false
+    };
+    return BaseChart(settings);
+}
+
+function BaseChart(new_settings) {
   // defaults
   var settings = {
     x_label: "x-axis",
@@ -18,8 +26,18 @@ function LineChart() {
     width: 680,
     height: 480,
     dots: false,
-    lines: true
+    lines: true,
+    dot_radius: 3.5
   };
+
+  // update settings with new_settings
+  if (arguments.length == 1) {
+    for (var key in new_settings) {
+      if (settings.hasOwnProperty(key)) {
+        settings[key] = new_settings[key];
+      }
+    }
+  }
 
   var avail_width = settings.width - settings.margin_left - settings.margin_right,
       avail_height = settings.height - settings.margin_top - settings.margin_bottom;
@@ -103,7 +121,7 @@ function LineChart() {
       dots.data(data)
         .enter().append("circle")
         .attr("class", "dot")
-        .attr("r", 3.5)
+        .attr("r", settings.dot_radius)
         .attr("cx", function(d) { return x(d.x); })
         .attr("cy", function(d) { return y(d.y); });
     }
